@@ -4,10 +4,10 @@ Get User’s Current Location On Map
 
 Lets understand this by creating a simple demo:
 
-Step 1:
+**Step 1:**
 Create a new xcode project named “MapDemo”. It will contain a ViewController.h and ViewController.m files.
 
-Step 2:
+**Step 2:**
 Now add MapKit framework before proceeding further.	 It is necessary to display built-in maps in your viewcontroller. To add this framework you can follow these steps :
 -	go to project target
 -	click on build phases tab
