@@ -129,6 +129,7 @@ Create a method that zoom the map to user’s location.
 **Step 10:**
 To customize pin view, you can implement delegate method of MKMapView as below:
 
+
 - (MKAnnotationView*) mapView:(MKMapView *)map viewForAnnotation:(id<MKAnnotation>)annotation 
 - {
     static NSString * const kPinIdentifier = @"Pin";
@@ -138,7 +139,9 @@ To customize pin view, you can implement delegate method of MKMapView as below:
         pin = [[MKPinAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:kPinIdentifier];
 
     UILabel *lbl = [[UILabel alloc] init];
+    
     [lbl setFont:[UIFont fontWithName:@"Helvetica" size:10]];
+    
     CGSize textsize = [[annotation title] sizeWithAttributes:@{NSFontAttributeName:[UIFont fontWithName:@"Helvetica" size:10]}];
     float wd = textsize.width + 10;
     lbl.backgroundColor = [UIColor blackColor];
