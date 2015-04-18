@@ -52,13 +52,13 @@ Now we will initialize CLLocationManager object to get user’s current location
 locationManager = [[CLLocationManager alloc] init];
 locationManager.delegate = self;
     
-#ifdef __IPHONE_8_0
+**#ifdef __IPHONE_8_0**
     if([[[UIDevice currentDevice] systemVersion] floatValue] >= 8.0) {
         // Use one or the other, not both. Depending on what you put in info.plist
         [locationManager requestWhenInUseAuthorization];
         [locationManager requestAlwaysAuthorization];
     }
-#endif
+**#endif]**
     
     [locationManager startUpdatingLocation];
 }
