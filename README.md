@@ -38,7 +38,6 @@ CLLocationManager : it provides support for location related activities like tra
 **Step 5:**
 Open ViewController.m file. Go to viewDidLoad method and add below code:
 
-
 mapView = [[MKMapView alloc] initWithFrame:self.view.frame];
 mapView.delegate = self;
 [self.view addSubview:mapView];
@@ -53,11 +52,13 @@ locationManager = [[CLLocationManager alloc] init];
 locationManager.delegate = self;
     
 **#ifdef __IPHONE_8_0**
+
     if([[[UIDevice currentDevice] systemVersion] floatValue] >= 8.0) {
         // Use one or the other, not both. Depending on what you put in info.plist
         [locationManager requestWhenInUseAuthorization];
         [locationManager requestAlwaysAuthorization];
     }
+    
 **#endif]**
     
     [locationManager startUpdatingLocation];
@@ -67,13 +68,14 @@ Here we have initialized CLLocationManager object and set its delegate to self s
 
 NOTE : Before iOS 8, we don’t have to ask for user permission manually by code to access their location. But from iOS 8, it is compulsory to put the below code for user permission:
 
-#ifdef __IPHONE_8_0
+**#ifdef __IPHONE_8_0**
+
     if([[[UIDevice currentDevice] systemVersion] floatValue] >= 8.0) {
         // Use one or the other, not both. Depending on what you put in info.plist
         [locationManager requestWhenInUseAuthorization];
         [locationManager requestAlwaysAuthorization];
     }
-#endif
+**#endif**
 
 You must have to include either of the following key-value pair in you .plist file to get this code work:
 
@@ -126,7 +128,9 @@ Create a method that zoom the map to user’s location.
 
 **Step 10:**
 To customize pin view, you can implement delegate method of MKMapView as below:
-- (MKAnnotationView*) mapView:(MKMapView *)map viewForAnnotation:(id<MKAnnotation>)annotation {
+
+- (MKAnnotationView*) mapView:(MKMapView *)map viewForAnnotation:(id<MKAnnotation>)annotation 
+- {
     static NSString * const kPinIdentifier = @"Pin";
     
     MKPinAnnotationView *pin = [[MKPinAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:kPinIdentifier];
@@ -145,7 +149,6 @@ To customize pin view, you can implement delegate method of MKMapView as below:
     lbl.lineBreakMode = NSLineBreakByWordWrapping;
     lbl.numberOfLines = 0;
     lbl.textAlignment = NSTextAlignmentCenter;
-    
     [pin addSubview:lbl];
     pin.annotation = annotation;
     pin.animatesDrop = NO;
